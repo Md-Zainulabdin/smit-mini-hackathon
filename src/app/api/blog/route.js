@@ -1,4 +1,4 @@
-import { setBlog } from "@/handlers/handlers";
+import { getBlog, setBlog } from "@/handlers/handlers";
 import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
@@ -15,4 +15,9 @@ export const POST = async (req, res) => {
         console.log(err);
         return NextResponse.error(err);
     }
+}
+
+export async function GET (req) {
+    const data = getBlog();
+    return NextResponse.json({ data })
 }

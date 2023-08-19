@@ -1,10 +1,12 @@
 import React from 'react'
-import Nav from './components/nav/page'
+import Header from './components/header/page'
+import Blogs from './components/blogs/page'
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Header value={"Good Noon Reader!"}/>
+      <Blogs/>
     </div>
   )
 }

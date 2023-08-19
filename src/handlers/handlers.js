@@ -1,5 +1,4 @@
 import { compare, hash } from "bcryptjs";
-import { log } from "console";
 import fs from "fs"
 import path from "path"
 
@@ -60,15 +59,16 @@ export const getBlog = () => {
 }
 // create blog
 
-export const setBlog = ({title, desc, fullName}) => {
+export const setBlog = ({ title, desc, fullName, date }) => {
 
     let blogs = getBlog();
 
     blogs.push({
-        id: blogs.length+1,
+        id: blogs.length + 1,
         title,
         desc,
-        fullName
+        fullName,
+        date
     })
 
     fs.writeFileSync(blogpath, JSON.stringify(blogs))

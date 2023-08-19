@@ -6,13 +6,12 @@ import React from 'react'
 const Nav = () => {
 
     const {status, data} = useSession();
-    console.log(data);
 
     return (
         <div className='w-full h-[45px] bg-[--primary-color] text-white'>
             <nav className='w-full h-full flex items-center justify-between px-[60px]'>
                 <div className="logo">
-                    <Link href={'/dashboard'} className='text-lg'>Personal Blogging App</Link>
+                    <Link href={'/'} className='text-lg'>Personal Blogging App</Link>
                 </div>
                 <div className="menu flex items-center gap-4 cursor-pointer">
                     {
