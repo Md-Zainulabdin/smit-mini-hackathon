@@ -5,9 +5,6 @@ import React from 'react'
 
 const Nav = () => {
 
-    const { status, session } = useSession();
-    console.log(status);
-
     return (
         <div className='w-full h-[45px] bg-[--primary-color] text-white'>
             <nav className='w-full h-full flex items-center justify-between px-[60px]'>
@@ -16,7 +13,7 @@ const Nav = () => {
                 </div>
                 <div className="menu">
                     {
-                        (status === "authenticated") ? (<button onClick={signOut()}>Logout</button>) : <Link href={'/login'}>Login</Link>
+                        // (status === "authenticated") ? (<button onClick={signOut()}>Logout</button>) : <Link href={'/login'}>Login</Link>
                     }
                 </div>
             </nav>

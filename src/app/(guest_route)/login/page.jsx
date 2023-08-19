@@ -8,14 +8,13 @@ const LoginPage = () => {
   const router = useRouter();
 
   const onSubmitHandler = async (firstName, lastName, email, password) => {
-
+    console.log(email, password);
    const data = await signIn("credentials", {
     redirect: false,
     email, 
     password,
    })
    if (data.ok && data.error === null) {
-    alert("login")
     router.replace('/dashboard')
   }
     

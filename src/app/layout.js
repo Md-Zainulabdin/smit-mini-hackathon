@@ -1,6 +1,5 @@
 'use client'
 import './globals.css'
-import AuthProvider from './components/AuthProvider/page'
 import Nav from './components/nav/page'
 
 
@@ -11,7 +10,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
       <html lang="en">
         <head>
           <title>blogging App</title>
@@ -21,6 +19,5 @@ export default function RootLayout({ children }) {
             {children}
         </body>
       </html>
-    </AuthProvider>
   )
 }
