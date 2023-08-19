@@ -1,13 +1,14 @@
-import Blog from '@/app/components/blog/page'
+import Header from '@/app/components/header/page'
 import React from 'react'
+import PublishBlogs from '@/app/components/publish-blog/page'
+import Blogs from '@/app/components/blogs/page'
 
 const Dashboard = () => {
     return (
         <div className='w-full aliceblue'>
-            <div className="w-full h-[80px] bg-white flex items-center justify-start border px-[60px]">
-                <h1 className="text-2xl text-[#222] font-semibold">Dashboard</h1>
-            </div>
-            <Blog/>
+            <Header value={'Dashboard'} />
+            <PublishBlogs />
+            <Blogs/>
         </div>
     )
 }

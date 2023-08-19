@@ -60,15 +60,15 @@ export const getBlog = () => {
 }
 // create blog
 
-export const setBlog = ({title, desc}) => {
+export const setBlog = ({title, desc, fullName}) => {
 
     let blogs = getBlog();
-    console.log('blogs', blogs);
 
     blogs.push({
         id: blogs.length+1,
         title,
-        desc
+        desc,
+        fullName
     })
 
     fs.writeFileSync(blogpath, JSON.stringify(blogs))

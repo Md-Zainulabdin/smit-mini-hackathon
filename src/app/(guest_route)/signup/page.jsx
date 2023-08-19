@@ -1,5 +1,6 @@
 "use client";
 import Form from "@/app/components/Form/page";
+import Header from "@/app/components/header/page";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -27,9 +28,7 @@ const signUpPage = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full h-[80px] flex items-center justify-start border px-[60px]">
-        <h1 className="text-2xl text-[#222] font-semibold">Signup</h1>
-      </div>
+      <Header value={'Sign Up'}/>
       <div className="w-full h-[100vh] flex items-center justify-center">
         <Form signIn={false} onFormSubmit={onSubmit} />
       </div>

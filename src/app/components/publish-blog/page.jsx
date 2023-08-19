@@ -1,10 +1,13 @@
 'use client'
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react'
 
-const Blog = () => {
+const PublishBlogs = () => {
 
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
+  const {data} = useSession();
+  const fullName = `${data?.user?.firstname} ${data?.user?.lastname}`;
 
   const onPublishHandler = async () => {
     const res = await fetch("/api/blog", {
@@ -14,7 +17,8 @@ const Blog = () => {
       },
       body: JSON.stringify({
         title,
-        desc
+        desc,
+        fullName
       }),
     });
 
@@ -22,7 +26,7 @@ const Blog = () => {
   }
 
   return (
-    <div className='w-full px-[60px] mt-12 '>
+    <div className='w-[70%] px-[60px] mt-12 '>
       <div className='border p-8 flex flex-col gap-4 rounded shadow-md bg-white'>
         <div className='title w-full rounded-sm'>
           <input type="text" name='title' onChange={(e) => {
@@ -42,4 +46,4 @@ const Blog = () => {
   )
 }
 
-export default Blog
+export default PublishBlogs
