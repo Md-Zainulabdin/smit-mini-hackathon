@@ -1,4 +1,5 @@
 import { compare, hash } from "bcryptjs";
+import { log } from "console";
 import fs from "fs"
 import path from "path"
 
@@ -39,7 +40,7 @@ export const setUser = async ({ firstName, lastName, email, password }) => {
 
 export const verifyEmail = (email) => {
     const users = getUsers();
-    return users.find(user => user.email.toLowerCase() === email.toLowerCase());
+    return users.find((user) => user.email.toLowerCase() === email.toLowerCase())
 }
 
 // verify password
@@ -47,4 +48,28 @@ export const verifyEmail = (email) => {
 export const verifyPassword = async (hashedPassword, passowrd) => {
     let isFound = await compare(passowrd, hashedPassword);
     return isFound;
+}
+
+const blogpath = path.join(process.cwd(), 'src', 'data', 'blog.json');
+
+// get blog
+
+export const getBlog = () => {
+    const data = JSON.parse(fs.readFileSync(blogpath));
+    return data;
+}
+// create blog
+
+export const setBlog = ({title, desc}) => {
+
+    let blogs = getBlog();
+    console.log('blogs', blogs);
+
+    blogs.push({
+        id: blogs.length+1,
+        title,
+        desc
+    })
+
+    fs.writeFileSync(blogpath, JSON.stringify(blogs))
 }

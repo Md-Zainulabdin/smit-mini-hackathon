@@ -12,10 +12,12 @@ const Form = ({ signIn, onFormSubmit }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-     if (password !== repeatPassword) {
+    if (!signIn) {
+      if (password !== repeatPassword) {
         alert("check password!")
         return;
-     }
+      }
+    }
     onFormSubmit(firstName, lastName, email, password);
   };
 
@@ -29,13 +31,15 @@ const Form = ({ signIn, onFormSubmit }) => {
         >
           {!signIn ? (
             <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="username" className=" text-[#333]">
+              <label htmlFor="firstname" className=" text-[#333]">
                 First Name :
               </label>
               <input
+                id="firstname"
                 type="text"
                 name="firstName"
                 value={firstName}
+                autocomplete
                 onChange={(e) => {
                   setFirstName(e.target.value);
                 }}
@@ -47,12 +51,14 @@ const Form = ({ signIn, onFormSubmit }) => {
 
           {!signIn ? (
             <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="username" className=" text-[#333]">
+              <label htmlFor="lastname" className=" text-[#333]">
                 Last Name :
               </label>
               <input
+                id="lastname"
                 type="text"
                 name="lastName"
+                autocomplete
                 value={lastName}
                 onChange={(e) => {
                   setLastName(e.target.value);
@@ -68,6 +74,7 @@ const Form = ({ signIn, onFormSubmit }) => {
               Email :
             </label>
             <input
+              id="email"
               type="email"
               name="email"
               value={email}
@@ -84,6 +91,7 @@ const Form = ({ signIn, onFormSubmit }) => {
               Password :
             </label>
             <input
+              id="password"
               type="password"
               name="password"
               value={password}
@@ -95,21 +103,26 @@ const Form = ({ signIn, onFormSubmit }) => {
             />
           </div>
 
-          <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="password" className=" text-[#333]">
-              Repeat Password :
-            </label>
-            <input
-              type="password"
-              name="Repeat Password"
-              value={repeatPassword}
-              onChange={(e) => {
-                setRepeatPassword(e.target.value);
-              }}
-              required
-              className="border p-1 outline-none"
-            />
-          </div>
+          {
+            (!signIn) ? (
+              <div className="flex flex-col gap-2 w-full">
+                <label htmlFor="repeatpassword" className=" text-[#333]">
+                  Repeat Password :
+                </label>
+                <input
+                  id="repeatpassword"
+                  type="password"
+                  name="Repeat Password"
+                  value={repeatPassword}
+                  onChange={(e) => {
+                    setRepeatPassword(e.target.value);
+                  }}
+                  required
+                  className="border p-1 outline-none"
+                />
+              </div>
+            ) : null
+          }
 
           <div>
             {signIn ? (
