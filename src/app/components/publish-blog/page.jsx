@@ -1,9 +1,11 @@
 'use client'
 import { useSession } from 'next-auth/react';
 import React, { useState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 
 const PublishBlogs = () => {
+  const router = useRouter()
 
   const dateBuilder = (d) => {
     let months = [
@@ -63,8 +65,9 @@ const PublishBlogs = () => {
     });
 
     if (res.ok) {
-      titleRef.current.value = ""
-      descRef.current.value = ""
+      titleRef.current.value = "";
+      descRef.current.value = "";
+      window.location.reload()
     }
   }
 

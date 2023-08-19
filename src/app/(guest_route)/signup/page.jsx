@@ -22,7 +22,7 @@ const signUpPage = () => {
 
     if (res.ok) {
       alert("Signup Succesfully");
-      router.replace('/login')
+      router.push('/login')
     }
   };
 
