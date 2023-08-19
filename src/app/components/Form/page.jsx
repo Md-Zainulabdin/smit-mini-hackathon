@@ -4,21 +4,23 @@ import React, { useState } from "react";
 
 const Form = ({ signIn, onFormSubmit }) => {
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    onFormSubmit(username, email, password);
+     if (password !== repeatPassword) {
+        alert("check password!")
+        return;
+     }
+    onFormSubmit(firstName, lastName, email, password);
   };
 
   return (
     <div className="w-[33%] px-3 py-4 border">
-      <div className="title border-b pb-5 pt-2">
-        <h1 className="text-3xl font-medium text-[#222]">
-          {signIn ? "Sign In " : "Sign Up"}
-        </h1>
-      </div>
 
       <div className="form w-full mt-3">
         <form
@@ -27,24 +29,42 @@ const Form = ({ signIn, onFormSubmit }) => {
         >
           {!signIn ? (
             <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="username" className="text-lg text-[#333]">
-                Username :
+              <label htmlFor="username" className=" text-[#333]">
+                First Name :
               </label>
               <input
                 type="text"
-                name="username"
-                value={username}
+                name="firstName"
+                value={firstName}
                 onChange={(e) => {
-                  setUsername(e.target.value);
+                  setFirstName(e.target.value);
                 }}
                 required
-                className="border p-2 outline-none"
+                className="border p-1 outline-none"
+              />
+            </div>
+          ) : null}
+
+          {!signIn ? (
+            <div className="flex flex-col gap-2 w-full">
+              <label htmlFor="username" className=" text-[#333]">
+                Last Name :
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
+                required
+                className="border p-1 outline-none"
               />
             </div>
           ) : null}
 
           <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="text-lg text-[#333]">
+            <label htmlFor="email" className=" text-[#333]">
               Email :
             </label>
             <input
@@ -55,12 +75,12 @@ const Form = ({ signIn, onFormSubmit }) => {
                 setEmail(e.target.value);
               }}
               required
-              className="border p-2 outline-none"
+              className="border p-1 outline-none"
             />
           </div>
 
           <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="password" className="text-lg text-[#333]">
+            <label htmlFor="password" className=" text-[#333]">
               Password :
             </label>
             <input
@@ -71,7 +91,23 @@ const Form = ({ signIn, onFormSubmit }) => {
                 setPassword(e.target.value);
               }}
               required
-              className="border p-2 outline-none"
+              className="border p-1 outline-none"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2 w-full">
+            <label htmlFor="password" className=" text-[#333]">
+              Repeat Password :
+            </label>
+            <input
+              type="password"
+              name="Repeat Password"
+              value={repeatPassword}
+              onChange={(e) => {
+                setRepeatPassword(e.target.value);
+              }}
+              required
+              className="border p-1 outline-none"
             />
           </div>
 
@@ -86,7 +122,7 @@ const Form = ({ signIn, onFormSubmit }) => {
           <div className="w-full text-center mt-3">
             <button
               type="submit"
-              className="w-full border p-3 bg-blue-500 text-white rounded-md"
+              className="w-full border p-3 bg-[--primary-color] text-white rounded-md"
             >
               {signIn ? "Sign In" : "Sign Up"}
             </button>

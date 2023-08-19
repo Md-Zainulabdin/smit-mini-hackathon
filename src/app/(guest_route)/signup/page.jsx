@@ -1,10 +1,11 @@
 "use client";
 import Form from "@/app/components/Form/page";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const signUpPage = () => {
-  const onSubmit = async (username, email, password) => {
+  const router = useRouter();
+  const onSubmit = async (firstName, lastName, email, password) => {
     const res = await fetch("/api/users", {
       method: "POST",
       headers: {
@@ -13,20 +14,25 @@ const signUpPage = () => {
       body: JSON.stringify({
         email,
         password,
-        username,
+        firstName,
+        lastName,
       }),
     });
 
     if (res.ok) {
-      alert("User Created");
-      console.log(res);
-      redirect('/');
+      alert("Signup Succesfully");
+      router.replace('/login')
     }
   };
 
   return (
-    <div className="w-full h-[90vh] flex justify-center items-center">
-      <Form signIn={false} onFormSubmit={onSubmit} />
+    <div className="w-full">
+      <div className="w-full h-[80px] flex items-center justify-start border px-[60px]">
+        <h1 className="text-2xl text-[#222] font-semibold">Signup</h1>
+      </div>
+      <div className="w-full h-[100vh] flex items-center justify-center">
+        <Form signIn={false} onFormSubmit={onSubmit} />
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ export const getUsers = () => {
 
 // Set User in Database
 
-export const setUser = async ({ username, email, password }) => {
+export const setUser = async ({ firstName, lastName, email, password }) => {
     let users = getUsers();
 
     const isEmailFound = Boolean(verifyEmail(email));
@@ -25,7 +25,8 @@ export const setUser = async ({ username, email, password }) => {
     const hashedPassword = await hash(password, 12);
     users.push({
         id: users.length + 1,
-        username,
+        firstName,
+        lastName,
         email,
         password: hashedPassword,
     })

@@ -14,16 +14,17 @@ const LoginPage = () => {
       email,
       password,
     });
-    if (data.ok && data.error === null) {
-      alert("Sucessfully Login");
-      router.replace("/")
-
-    }
+    console.log(data);
   };
 
   return (
-    <div className="w-full h-[90vh] flex justify-center items-center">
-      <Form signIn={true} onFormSubmit={onSubmitHandler} />
+    <div className="w-full ">
+      <div className="w-full h-[80px] flex items-center justify-start border px-[60px]">
+        <h1 className="text-2xl text-[#222] font-semibold">login</h1>
+      </div>
+      <div className="w-full h-[70vh] flex justify-center flex-col items-center">
+        <Form signIn={true} onFormSubmit={onSubmitHandler} />
+      </div>
     </div>
   );
 };
