@@ -10,7 +10,7 @@ const Blogs = () => {
           <h1 className='text-2xl font-semibold'>My Blogs</h1>
         </div>
         <div className="blogs py-8">
-          <EachBlogs blogs={data}/>
+          <EachBlogs blogs={data} edit={true}/>
         </div>
     </div>
   )
