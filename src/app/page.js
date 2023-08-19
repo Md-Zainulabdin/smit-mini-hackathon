@@ -2,7 +2,8 @@ import React from 'react'
 import Header from './components/header/page'
 import Blogs from './components/blogs/page'
 
-const Home = () => {
+
+const Home =  () => {
   const date = new Date();
   const hour = date.getHours();
   let greet;

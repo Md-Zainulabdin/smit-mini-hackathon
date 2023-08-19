@@ -11,13 +11,13 @@ const Form = ({ signIn, onFormSubmit }) => {
 
 
   const onSubmitHandler = (e) => {
+    e.preventDefault();
     if (!signIn) {
       if (password !== repeatPassword) {
         alert("check password!")
         return;
       }
     }
-    e.preventDefault();
     onFormSubmit(firstName, lastName, email, password);
   };
 

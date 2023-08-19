@@ -9,7 +9,7 @@ const Blogs = () => {
         <div className="blog-title">
           <h1 className='text-2xl font-semibold'>My Blogs</h1>
         </div>
-        <div className="blogs py-8">
+        <div className="w-[73%] blogs py-8">
           <EachBlogs blogs={data} edit={true}/>
         </div>
     </div>

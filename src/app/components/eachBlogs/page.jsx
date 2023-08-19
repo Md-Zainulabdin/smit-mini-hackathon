@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -11,7 +11,7 @@ const EachBlogs = ({ blogs, edit}) => {
         (blogs.length !== 0) ? (
                 <div className='w-full flex flex-col gap-8'>
                 {blogs.map((blog) => (
-                     <Link href={`/blog-detail/${blog.id}`} className='w-[70%] border bg-white rounded-md shadow-md p-6 overflow-hidden' key={blog.id}
+                     <Link href={`/blog-detail/${blog.id}`} className='w-full border bg-white rounded-md shadow-md p-6 overflow-hidden' key={blog.id}
                      >
                      <div className='flex flex-col gap-4'>
                          <div className="row1 flex gap-3">

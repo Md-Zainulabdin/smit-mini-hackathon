@@ -15,6 +15,7 @@ const LoginPage = () => {
     password,
    })
    if (data.ok && data.error === null) {
+    alert('Login Sucessfully')
     router.replace('/dashboard')
   }
     
