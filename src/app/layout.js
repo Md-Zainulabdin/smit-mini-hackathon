@@ -2,6 +2,7 @@
 import './globals.css'
 import Nav from './components/nav/page'
 import AuthProvider from './components/AuthProvider/page'
+import { BlogProvider } from '@/context/context'
 
 
 export const metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({ children }) {
           <title>blogging App</title>
         </head>
         <body>
-          <Nav />
-          {children}
+          <BlogProvider>
+            <Nav />
+            {children}
+          </BlogProvider>
         </body>
       </html>
     </AuthProvider>

@@ -6,6 +6,7 @@ import React from 'react'
 const Nav = () => {
 
     const {status, data} = useSession();
+    console.log(data);
 
     return (
         <div className='w-full h-[45px] bg-[--primary-color] text-white'>

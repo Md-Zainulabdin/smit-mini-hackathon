@@ -1,10 +1,11 @@
 "use client";
 import Form from "@/app/components/Form/page";
 import Header from "@/app/components/header/page";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const signUpPage = () => {
+  const router = useRouter();
   const onSubmit = async (firstName, lastName, email, password) => {
     const res = await fetch("/api/users", {
       method: "POST",
@@ -21,7 +22,7 @@ const signUpPage = () => {
 
     if (res.ok) {
       alert("Signup Succesfully");
-      redirect('/login')
+      router.replace('/login')
     }
   };
 
